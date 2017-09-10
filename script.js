@@ -1,4 +1,9 @@
 var button = document.getElementsByClassName("submit")[0];
+//var name = prompt("Hi, What's your name?");
+var today = document.createTextNode(/*name +'s*/ "To-Do List for " + new Date().toDateString());
+var date = document.getElementById("date");
+date.appendChild(today);
+
 var submit = button.addEventListener("click",function(){
 	var inputBoxText = document.getElementsByClassName("inputBox")[0].value;
 
@@ -51,7 +56,7 @@ var submit = button.addEventListener("click",function(){
 
 
 		toDoItem.className =  "toDoItem";
-		toDoItemTextSection.className = "toDoItemTextSection"
+		toDoItemTextSection.className = "toDoItemTextSection";
 		buttonContainer.className = "buttonContainer";
 		doneButton.className = "doneButton";
 		deleteButton.className = "deleteButton";
@@ -69,7 +74,13 @@ var submit = button.addEventListener("click",function(){
 		checkSign.appendChild(check);
 
 		deleteButton.addEventListener("click",function(){
-			thisDiv.remove();	
+			var doubleCheck = confirm("Are you sure?");
+			if(doubleCheck){
+				thisDiv.remove();	
+			}else{
+				return;
+			}
+			
 		});
 
 		
@@ -104,5 +115,5 @@ var submit = button.addEventListener("click",function(){
 
 		document.getElementsByClassName("itemList")[0].appendChild(toDoItem);
 		document.getElementsByClassName("inputBox")[0].value = "";
-};
+    };
 });
